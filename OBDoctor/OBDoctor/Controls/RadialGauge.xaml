@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:OBDoctor.ViewModels"
+             xmlns:controls="clr-namespace:OBDoctor.Controls"
+             x:Class="OBDoctor.Controls.RadialGauge">
+    <ContentView.BindingContext>
+        <viewmodels:RadialGaugeViewModel/>
+    </ContentView.BindingContext>
+    <Frame
+        HorizontalOptions="CenterAndExpand"
+        HeightRequest="200"
+        WidthRequest="200"
+        CornerRadius="100"
+        VerticalOptions="CenterAndExpand"
+        BackgroundColor="White"
+        Padding="3">
+
+        <Frame
+            HorizontalOptions="CenterAndExpand"
+            HeightRequest="200"
+            WidthRequest="200"
+            CornerRadius="100"
+            VerticalOptions="CenterAndExpand"
+            BackgroundColor="Black">
+
+            <Grid>
+                <controls:CirclePathView
+                    MinValue="{Binding MinValue}"
+                    MaxValue="{Binding MaxValue}"
+                    CurrentValue="{Binding CurrentValue}"/>
+
+                <StackLayout>
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="EndAndExpand"
+                        FontSize="50"
+                        FontAttributes="Bold"
+                        Text="{Binding CurrentValue, StringFormat='{}{0}'}"
+                        TextColor="White"/>
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="StartAndExpand" FontSize="14"
+                        Text="{Binding GaugeText}" TextColor="White"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
+    </Frame>
+</ContentView>
