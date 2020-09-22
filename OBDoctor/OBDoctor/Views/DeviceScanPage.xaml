@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:OBDoctor.ViewModels"
+             x:Class="OBDoctor.Views.DeviceScanPage">
+    <ContentPage.BindingContext>
+        <viewmodels:DeviceScanViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Button
+                HorizontalOptions="Start"
+                Margin="10"
+                Text="Search"
+                Command="{Binding ScanCommand}"/>
+            <ListView
+                x:Name="DeviceList"
+                ItemsSource="{Binding Devices}"
+                SelectedItem="{Binding SelectedDevice, Mode=TwoWay}"
+                ItemTapped="DeviceList_ItemTapped"
+                Margin="10"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Label Text="{Binding Name}" TextColor="Black"/>
+                                <Label Text="{Binding Id}" Grid.Row="1" TextColor="Black"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
